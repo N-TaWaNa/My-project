@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پورتفولیو - نقیب الله توانا</title>
+    <style>
+        /* حذف فاصله‌های پیش‌فرض و تنظیم کلی */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* تنظیمات کلی صفحه */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            width: 100%;
+            direction: rtl;
+            text-align: center;
+        }
+
+        /* کانتینر اصلی برای چیدمان صفحه */
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header"
+                "profile"
+                "about"
+                "skills"
+                "projects"
+                "contact"
+                "social"
+                "footer";
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px; /* محدود کردن عرض در حالت موبایل */
+            margin: auto;
+        }
+
+        /* هدر (بخش عنوان) */
+        header {
+            grid-area: header;
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* بخش تصویر پروفایل */
+        .profile {
+            grid-area: profile;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .profile img {
+            width: 100px; /* اندازه تصویر در موبایل */
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        /* استایل بخش‌های محتوا */
+        .about, .skills, .projects, .contact, .social {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* لیست مهارت‌ها */
+        .skills ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* پروژه‌ها در حالت دکمه */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .project {
+            background: #ffc107;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* استایل فرم تماس */
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact button {
+            width: 100%;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .contact button:hover {
+            opacity: 0.9;
+        }
+
+        /* استایل فوتر */
+        footer {
+            grid-area: footer;
+            text-align: center;
+            font-size: 14px;
+            background: gray;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* رسانه‌ها - چیدمان بهتر برای موبایل */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* رنگ‌بندی دکمه‌های شبکه‌های اجتماعی */
+        .social-links a:nth-child(1) { background: #1877f2; } /* فیسبوک */
+        .social-links a:nth-child(2) { background: #24292e; } /* گیت‌هاب */
+        .social-links a:nth-child(3) { background: #0077b5; } /* لینکدین */
+        .social-links a:nth-child(4) { background: #0088cc; } /* تلگرام */
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        /* تنظیمات برای دسکتاپ */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 1200px; /* افزایش عرض در حالت دسکتاپ */
+                grid-template-columns: 1fr 2fr; /* چیدمان دو ستونه برای دسکتاپ */
+                grid-template-areas: 
+                    "header header"
+                    "profile about"
+                    "skills skills"
+                    "projects projects"
+                    "contact contact"
+                    "social social"
+                    "footer footer";
+            }
+
+            /* اندازه تصویر پروفایل برای دسکتاپ */
+            .profile img {
+                width: 150px; /* افزایش اندازه تصویر در دسکتاپ */
+            }
+
+            /* شبکه‌های اجتماعی در دسکتاپ کنار هم قرار می‌گیرند */
+            .social-links {
+                justify-content: flex-start;
+            }
+        }
+
+        /* تنظیمات برای موبایل */
+        @media (max-width: 767px) {
+            .container {
+                max-width: 400px; /* محدود کردن عرض در موبایل */
+            }
+
+            /* تصویر پروفایل در موبایل */
+            .profile img {
+                width: 100px; /* کاهش اندازه تصویر در موبایل */
+            }
+
+            /* شبکه‌های اجتماعی در موبایل وسط چین */
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>پورتفولیو - نقیب الله "توانا"</h1>
+            <p>توسعه‌ دهنده فرانت‌اند</p>
+        </header>
+
+        <aside class="profile">
+            <img src="/image/Naqibullah.jpg" alt="نقیب الله توانا">
+            <h2>نقیب الله "توانا"</h2>
+        </aside>
+
+        <section class="about">
+            <h2>درباره من</h2>
+            <p>انجنیر نقیب الله "توانا" متخصص و برنامه نویس وب، فعلاً به حیث توسعه دهنده فرانت اند و پلان آینده فول استک و عشق خاصی برنامه نویسی دارد.</p>
+        </section>
+
+        <section class="skills">
+            <h2>مهارت‌ها</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </section>
+
+        <section class="projects">
+            <h2>پروژه‌ها</h2>
+            <div class="grid">
+                <div class="project">پروژه 1</div>
+                <div class="project">پروژه 2</div>
+                <div class="project">پروژه 3</div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>تماس با من</h2>
+            <p>برای ارتباط سریع‌تر می‌توانید فرم زیر را پر کنید یا مستقیماً از طریق ایمیل پیام بفرستید.</p>
+            <form>
+                <input type="text" placeholder="نام شما" required>
+                <input type="email" placeholder="ایمیل شما" required>
+                <textarea placeholder="پیام شما" rows="5" required></textarea>
+                <button type="submit">ارسال پیام</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>© ۲۰۲۵ - نقیب الله توانا | <a href="mailto:nq.halim22@gmail.com" style="color: white;">تماس با من</a></p>
+        </footer>
+
+        <section class="social">
+            <h2>شبکه های اجتماعی</h2>
+            <div class="social-links">
+                <a href="#">📘 Facebook</a>
+                <a href="https://github.com/N-TaWaNa">🌟 GitHub</a>
+                <a href="#">💼 LinkedIn</a>
+                <a href="#">✈️ Telegram</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
